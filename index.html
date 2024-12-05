@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前後端分離範例</title>
+    <script>
+        async function fetchMessage() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/message');
+                const data = await response.json();
+                document.getElementById('message').innerText = data.message;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('message').innerText = 'Failed to fetch message.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>前後端分離範例</h1>
+    <button onclick="fetchMessage()">取得訊息</button>
+    <p id="message"></p>
+</body>
+</html>
